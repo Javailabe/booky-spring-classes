@@ -8,10 +8,10 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pl.sztukakodu</groupId>
-	<artifactId>bookaro</artifactId>
+	<groupId>pl.booky</groupId>
+	<artifactId>booky</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Bookaro Online Store</name>
+	<name>Booky Online Store</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
