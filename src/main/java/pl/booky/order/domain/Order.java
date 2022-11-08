@@ -1,9 +1,14 @@
 package pl.booky.order.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import pl.booky.jpa.BaseEntity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -14,7 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "orders")
 @EntityListeners(AuditingEntityListener.class)
-public class Order {
+public class Order extends BaseEntity {
 
     @Builder.Default
     @Enumerated(EnumType.STRING)
@@ -27,4 +32,33 @@ public class Order {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Receipient receipient;
+
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    private Delivery delivery = Delivery.COURIER;
+
+    @CreatedDate
+    private LocalDateTime createAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+
+    public UpdateStatusResult updateStatus(OrderStatus newStatus) {
+        UpdateStatusResult result = this.status.updateStatus(newStatus);
+        this.status = result.getNewStatus();
+        return result;
+    }
+
+    public BigDecimal getItemsPrice() {
+        return items.stream()
+                .map(item -> item.getBook().getPrice().multiply(new BigDecimal(item.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal getDeliveryPrice() {
+        if (items.isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+        return delivery.getPrice();
+    }
 }
