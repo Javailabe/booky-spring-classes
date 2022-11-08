@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Receipient extends BaseEntity {
+public class Recipient extends BaseEntity {
     private String email;
     private String name;
     private String phone;
