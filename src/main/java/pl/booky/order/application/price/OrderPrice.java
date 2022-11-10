@@ -1,7 +1,10 @@
 package pl.booky.order.application.price;
 
+import lombok.Value;
+
 import java.math.BigDecimal;
 
+@Value
 public class OrderPrice {
 
     BigDecimal itemsPrice;
