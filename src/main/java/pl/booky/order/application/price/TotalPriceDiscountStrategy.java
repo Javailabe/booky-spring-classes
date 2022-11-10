@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Set;
 
-public class TotalPriceDiscountStrategy {
+public class TotalPriceDiscountStrategy implements DiscountStrategy{
 
     public BigDecimal calculate(Order order) {
         if (isGreaterOrEqual(order, 400)) {
