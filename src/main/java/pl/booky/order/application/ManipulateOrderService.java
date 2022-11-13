@@ -12,6 +12,7 @@ import pl.booky.order.domain.Order;
 import pl.booky.order.domain.OrderItem;
 import pl.booky.order.domain.Recipient;
 import pl.booky.order.domain.UpdateStatusResult;
+import pl.booky.security.UserSecurity;
 
 import java.util.Set;
 import java.util.stream.Collectors;

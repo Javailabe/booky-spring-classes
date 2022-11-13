@@ -12,6 +12,7 @@ import pl.booky.order.application.RichOrder;
 import pl.booky.order.application.port.ManipulateOrderUseCase;
 import pl.booky.order.application.port.QueryOrderUseCase;
 import pl.booky.order.domain.OrderStatus;
+import pl.booky.security.UserSecurity;
 import pl.booky.web.CreatedURI;
 
 import java.net.URI;
@@ -76,7 +77,7 @@ public class OrdersController {
         UpdateStatusCommand command = new UpdateStatusCommand(id, orderStatus, user);
                 return manipulateOrder.updateOrderStatus(command)
                         .handle(
-                                newStatus -> ResponseEntity.accepted().build()
+                                newStatus -> ResponseEntity.accepted().build(),
                                 error -> ResponseEntity.status(error.getStatus()).build()
                         );
     }
