@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.booky.uploads.application.ports.UploadUseCase;
+import pl.booky.uploads.db.UploadJpaRepository;
 import pl.booky.uploads.domain.Upload;
 
 import java.util.Optional;
