@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.booky.users.domain.UserEntity;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class UserEntityDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return entity.getUsername;
+        return entity.getUsername();
     }
 
     @Override
